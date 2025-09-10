@@ -16,7 +16,6 @@ kotlin = "2.2.10"
 kotlinx-coroutines = "1.10.2"
 
 androidx-constraintlayout = "2.2.1"
-androidx-material = "1.12.0"
 navigationCompose = "2.8.0-alpha13"
 kotlinSerialization = "1.9.0"
 koin = "4.1.1"
@@ -39,7 +38,7 @@ androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecyc
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 
-#androidx-material3 = { group = "com.google.android.material3", name = "material3", version.ref = "androidx-material" }
+
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 
 jetbrains-compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref= "navigationCompose"}
