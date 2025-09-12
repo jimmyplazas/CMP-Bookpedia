@@ -10,7 +10,6 @@ import dev.alejo.bookpedia.book.presentation.book_list.BookListScreen
 import dev.alejo.bookpedia.book.presentation.book_list.BookListState
 import dev.alejo.bookpedia.book.presentation.book_list.components.BookListItem
 import dev.alejo.bookpedia.book.presentation.book_list.components.BookSearchBar
-import dev.alejo.bookpedia.book.presentation.book_list.dummyBooks
 
 @Preview
 @Composable
@@ -51,7 +50,7 @@ private fun BookItemPreview() {
 private fun BookScreenPreview() {
     BookListScreen(
         state = BookListState(
-            searchResults = dummyBooks
+            searchResults = emptyList()
         ),
         onAction = {},
         modifier = Modifier.fillMaxWidth()
