@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dev.alejo.bookpedia.book.domain.model.Book
+import dev.alejo.bookpedia.book.presentation.book_detail.components.BookChip
+import dev.alejo.bookpedia.book.presentation.book_detail.components.TitledContent
 import dev.alejo.bookpedia.book.presentation.book_list.BookListScreen
 import dev.alejo.bookpedia.book.presentation.book_list.BookListState
 import dev.alejo.bookpedia.book.presentation.book_list.components.BookListItem
@@ -22,6 +24,23 @@ private fun BookSearchBarPreview() {
             modifier = Modifier.fillMaxWidth()
         )
     }
+}
+
+@Preview
+@Composable
+private fun BookChipPreview() {
+    BookChip(
+        chipContent = { }
+    )
+}
+
+@Preview
+@Composable
+private fun TitledContentPreview() {
+    TitledContent(
+        title = "Example",
+        content = {}
+    )
 }
 
 @Preview
