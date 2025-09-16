@@ -13,4 +13,10 @@
     <string name="no_internet">Please check your internet connection</string>
     <string name="server_error">Server error</string>
     <string name="serialization">Couldn't parse data</string>
+    <string name="book_cover">Book cover</string>
+    <string name="rating">Rating</string>
+    <string name="pages">Pages</string>
+    <string name="languages">Languages</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="description_no_available">Description is not available</string>
 </resources>
