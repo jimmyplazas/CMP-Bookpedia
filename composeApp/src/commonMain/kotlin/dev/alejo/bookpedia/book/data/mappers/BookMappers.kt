@@ -5,7 +5,7 @@ import dev.alejo.bookpedia.book.domain.model.Book
 
 fun SearchedBookDto.toBook(): Book {
     return Book(
-        id = id,
+        id = id.substringAfterLast('/'),
         title = title,
         description = null,
         imageUrl = if (coverKey != null) {
