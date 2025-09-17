@@ -1,7 +1,10 @@
 package dev.alejo.bookpedia.book.presentation.book_detail.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,11 +24,11 @@ enum class ChipSize {
 @Composable
 fun BookChip(
     modifier: Modifier = Modifier,
-    size: ChipSize = ChipSize.REGULAR,
-    chipContent: @Composable () -> Unit
+    size: ChipSize = REGULAR,
+    chipContent: @Composable RowScope.() -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .widthIn(
                 min = when (size) {
                     SMALL -> 50.dp
@@ -37,6 +40,11 @@ fun BookChip(
             .padding(vertical = 8.dp, horizontal = 12.dp),
         contentAlignment = Alignment.Center
     ) {
-        chipContent()
+        Row(
+            verticalAlignment =  Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            chipContent()
+        }
     }
 }
