@@ -160,9 +160,10 @@ fun BlurredImageBackground(
                                             brush = Brush.radialGradient(
                                                 colors = listOf(
                                                     SandYellow,
+                                                    SandYellow,
                                                     Color.Transparent
                                                 ),
-                                                radius = 70f
+                                                radius = 50f
                                             )
                                         )
                                 ) {
