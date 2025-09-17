@@ -4,7 +4,7 @@ import dev.alejo.bookpedia.book.domain.model.Book
 import dev.alejo.bookpedia.core.presentation.UiText
 
 data class BookListState(
-    val searchQuery: String = "",
+    val searchQuery: String = "Kotlin",
     val searchResults: List<Book> = emptyList(),
     val favoriteBooks: List<Book> = emptyList(),
     val isLoading: Boolean = false,
