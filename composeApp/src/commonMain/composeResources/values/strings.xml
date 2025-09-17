@@ -19,4 +19,7 @@
     <string name="languages">Languages</string>
     <string name="synopsis">Synopsis</string>
     <string name="description_no_available">Description is not available</string>
+    <string name="go_back">Go Back</string>
+    <string name="mark_as_favourite">Mark as favourite</string>
+    <string name="remove_from_favourite">Remove from favourite</string>
 </resources>
