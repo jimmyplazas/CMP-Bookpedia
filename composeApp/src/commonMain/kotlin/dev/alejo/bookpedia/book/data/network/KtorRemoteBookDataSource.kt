@@ -1,5 +1,6 @@
 package dev.alejo.bookpedia.book.data.network
 
+import dev.alejo.bookpedia.book.data.dto.BookWorkDto
 import dev.alejo.bookpedia.book.data.dto.SearchedResponseDto
 import dev.alejo.bookpedia.core.data.safeCall
 import dev.alejo.bookpedia.core.domain.DataError
@@ -16,7 +17,7 @@ class KtorRemoteBookDataSource(
     override suspend fun searchBooks(
         query: String,
         resultLimit: Int?
-    ): Result<SearchedResponseDto, DataError.Remote> = safeCall {
+    ): Result<SearchedResponseDto, DataError.Remote> = safeCall<SearchedResponseDto> {
         httpClient.get(
             urlString = "$BASE_URL/search.json"
         ) {
@@ -34,6 +35,14 @@ class KtorRemoteBookDataSource(
                     "ratings_count," +
                     "number_of_pages_median," +
                     "edition_count"
+            )
+        }
+    }
+
+    override suspend fun getBookDescription(bookWorkId: String): Result<BookWorkDto, DataError.Remote> {
+        return safeCall<BookWorkDto> {
+            httpClient.get(
+                urlString = "$BASE_URL/works/$bookWorkId.json"
             )
         }
     }
