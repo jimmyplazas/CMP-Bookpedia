@@ -19,4 +19,12 @@ class BookRepositoryImpl(
             }
     }
 
+    override suspend fun getBookDescription(bookWorkId: String): Result<String?, DataError.Remote> {
+        return remoteBookDataSource
+            .getBookDescription(bookWorkId = bookWorkId)
+            .map {
+                it.description
+            }
+    }
+
 }
