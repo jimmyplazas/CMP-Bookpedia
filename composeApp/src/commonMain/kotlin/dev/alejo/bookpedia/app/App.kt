@@ -1,5 +1,7 @@
 package dev.alejo.bookpedia.app
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,7 +34,12 @@ fun App() {
         navigation<Routes.BookGraph>(
             startDestination = Routes.BookList
         ) {
-            composable<Routes.BookList> {
+            composable<Routes.BookList>(
+                exitTransition = { slideOutHorizontally() },
+                popEnterTransition = {
+                    slideInHorizontally()
+                }
+            ) {
                 val viewModel = koinViewModel<BookListViewModel>()
                 val selectedViewModel = it.sharedKoinViewModel<SelectedBookViewModel>(navController)
 
@@ -48,7 +55,18 @@ fun App() {
                     }
                 )
             }
-            composable<Routes.BookDetail> {
+            composable<Routes.BookDetail>(
+                enterTransition = {
+                    slideInHorizontally { initialOffset ->
+                        initialOffset
+                    }
+                },
+                exitTransition = {
+                    slideOutHorizontally { initialOffset ->
+                        initialOffset
+                    }
+                }
+            ) {
                 val selectedViewModel = it.sharedKoinViewModel<SelectedBookViewModel>(navController)
                 val viewModel = koinViewModel<BookDetailViewModel>()
                 val selectedBook by selectedViewModel.selectedBook.collectAsStateWithLifecycle()
