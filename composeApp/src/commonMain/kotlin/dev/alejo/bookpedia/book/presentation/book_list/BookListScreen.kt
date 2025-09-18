@@ -202,11 +202,11 @@ fun BookListScreen(
                                 }
 
                                 1 -> {
-                                    if (state.favoriteBooks.isEmpty()) {
+                                    if (state.favouriteBooks.isEmpty()) {
                                         Text(text = stringResource(Res.string.no_favourites))
                                     } else {
                                         BookList(
-                                            books = state.favoriteBooks,
+                                            books = state.favouriteBooks,
                                             scrollState = favouriteBooksListState,
                                             modifier = Modifier.fillMaxSize(),
                                             onBookClick = { book ->
