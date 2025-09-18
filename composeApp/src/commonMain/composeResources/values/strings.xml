@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="search_placeholder">Search</string>
+    <string name="clear_search">Clear search</string>
+    <string name="search_results">Search results</string>
+    <string name="favourites">Favourites</string>
+    <string name="no_results">Oops, no results found</string>
+    <string name="no_favourites">Oops, you haven't added any favourites yet</string>
+    <string name="disk_full">Oops, it seems like your disk is full</string>
+    <string name="unknown_error">Oops, something went wrong</string>
+    <string name="request_timeout">The request timed out</string>
+    <string name="too_many_requests">Your quota seems to be exceeded</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="server_error">Server error</string>
+    <string name="serialization">Couldn't parse data</string>
+    <string name="book_cover">Book cover</string>
+    <string name="rating">Rating</string>
+    <string name="pages">Pages</string>
+    <string name="languages">Languages</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="description_no_available">Description is not available</string>
+    <string name="go_back">Go Back</string>
+    <string name="mark_as_favourite">Mark as favourite</string>
+    <string name="remove_from_favourite">Remove from favourite</string>
+</resources>
