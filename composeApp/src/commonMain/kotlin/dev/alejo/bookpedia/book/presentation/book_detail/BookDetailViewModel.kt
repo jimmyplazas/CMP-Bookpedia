@@ -9,6 +9,8 @@ import dev.alejo.bookpedia.book.domain.repository.BookRepository
 import dev.alejo.bookpedia.core.domain.onSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -25,6 +27,7 @@ class BookDetailViewModel(
     val state = _state
         .onStart {
             fetchBookDescription()
+            observeFavouriteStatus()
         }
         .stateIn(
             viewModelScope,
@@ -33,19 +36,39 @@ class BookDetailViewModel(
         )
 
     fun onAction(action: BookDetailAction) {
-        when(action) {
+        when (action) {
             BookDetailAction.OnBackClick -> {
 
             }
-            BookDetailAction.OnFavouriteClick -> {
 
+            BookDetailAction.OnFavouriteClick -> {
+                viewModelScope.launch {
+                    if (state.value.isFavourite) {
+                        bookRepository.deleteFromFavourite(bookId)
+                    } else {
+                        state.value.book?.let {
+                            bookRepository.markAsFavourite(it)
+                        }
+                    }
+                }
             }
+
             is BookDetailAction.OnSelectedBookChange -> {
                 _state.update {
                     it.copy(book = action.book)
                 }
             }
         }
+    }
+
+    private fun observeFavouriteStatus() {
+        bookRepository.isBookFavourite(bookId)
+            .onEach { isFavourite ->
+                _state.update {
+                    it.copy(isFavourite = isFavourite)
+                }
+            }
+            .launchIn(viewModelScope)
     }
 
     private fun fetchBookDescription() {
