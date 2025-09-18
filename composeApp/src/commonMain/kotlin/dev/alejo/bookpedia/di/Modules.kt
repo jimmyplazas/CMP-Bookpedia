@@ -1,5 +1,8 @@
 package dev.alejo.bookpedia.di
 
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import dev.alejo.bookpedia.book.data.database.DatabaseFactory
+import dev.alejo.bookpedia.book.data.database.FavouriteBookDatabase
 import dev.alejo.bookpedia.book.data.network.KtorRemoteBookDataSource
 import dev.alejo.bookpedia.book.data.network.RemoteBookDataSource
 import dev.alejo.bookpedia.book.data.repository.BookRepositoryImpl
@@ -20,6 +23,14 @@ val sharedModule = module {
     single { HttpClientFactory.create(get()) }
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::BookRepositoryImpl).bind<BookRepository>()
+
+    single {
+        get<DatabaseFactory>().create()
+            .setDriver(BundledSQLiteDriver())
+            .build()
+    }
+
+    single { get<FavouriteBookDatabase>().dao }
 
     viewModelOf(::BookListViewModel)
     viewModelOf(::SelectedBookViewModel)
